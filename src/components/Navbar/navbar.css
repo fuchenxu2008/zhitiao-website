@@ -1,0 +1,32 @@
+.navbar {
+  height: 8vh;
+  width: 100vw;
+  background: rgb(68, 68, 68);
+  /* internal */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  .navbar {
+    background: #1f1f1f;
+  }
+  .navbar-brand {
+    color: #d8d8d8;
+  }
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  color: #f6f6f6;
+}
+
+.navbar-brand img {
+  width: 4vh;
+  height: 4vh;
+  margin-right: 20px;
+}

@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useContext } from 'react';
+import { useMediaQuery, useWindowResize } from 'beautiful-react-hooks';
+import { GlobalContext } from './context/globalState';
+import Navbar from './components/Navbar';
+import IPhone from './components/iPhone';
 import './App.css';
 
 function App() {
+  const isDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  console.log('isDarkMode: ', isDarkMode);
+
+  const { onWindowResize } = useContext(GlobalContext);
+  useWindowResize(event => {
+    onWindowResize();
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <div className="iPhone-container">
+        <IPhone />
+      </div>
     </div>
   );
 }

@@ -1,0 +1,15 @@
+.message-list {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: -10px;
+  padding: 0px 4% 20% 4%;
+  /* padding: 50px 15px 0 15px; */
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.loading-more {
+  display: flex;
+  justify-content: center;
+}
