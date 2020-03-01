@@ -1,0 +1,24 @@
+.avatar-component {
+  position: relative;
+  overflow: visible;
+  width: calc(((((100vh - 8vh)-20px) * 0.85) * 0.5) * 0.868 * 18 / 375);
+  height: calc(((((100vh - 8vh)-20px) * 0.85) * 0.5) * 0.868 * 18 / 375);
+}
+
+.avatar-user-picture {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}
+
+.avatar-overlay-picture {
+  position: absolute;
+  display: block;
+  height: 160%;
+  width: 160%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

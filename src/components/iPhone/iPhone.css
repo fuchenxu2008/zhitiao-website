@@ -12,6 +12,53 @@
   align-items: center;
 }
 
+.display-area {
+  position: relative;
+  height: 94%;
+  width: calc(((((100vh - 8vh)-20px) * 0.85) * 0.5) * 0.868);
+  border-radius: calc(((((100vh - 8vh)-20px) * 0.85) * 0.5) * 0.868 * 0.1);
+  overflow: hidden;
+}
+
+.qrcode-modal {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(248, 248, 248, 0.534);
+  animation: fadeIn 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qrcode {
+  width: 50%;
+  height: calc(((((100vh - 8vh)-20px) * 0.85) * 0.5) * 0.868 * 0.5);
+  box-sizing: border-box;
+  padding: 3%;
+  animation: popUp 0.3s ease-in-out;
+  background: white;
+  border-radius: 50%;
+  box-shadow: -2px 5px 30px rgba(75, 75, 75, 0.5);
+  overflow: hidden;
+}
+
+.qrcode img {
+  width: 100%;
+}
+
+@supports (
+  (-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))
+) {
+  .qrcode-modal {
+    background-color: transparent;
+    backdrop-filter: saturate(200%) blur(15px);
+  }
+}
+
 @media (prefers-color-scheme: light) {
   .iPhone {
     -webkit-filter: drop-shadow(-30px 30px 45px rgba(27, 27, 27, 0.5));
@@ -23,11 +70,8 @@
   .iPhone {
     background-image: url(../../static/images/iphonex_dark.svg);
   }
-}
 
-.display-area {
-  height: 94%;
-  width: calc(((((100vh - 8vh)-20px) * 0.85) * 0.5) * 0.868);
-  border-radius: 7.5%;
-  overflow: hidden;
+  .qrcode-modal {
+    background: #1f1f1fb2;
+  }
 }

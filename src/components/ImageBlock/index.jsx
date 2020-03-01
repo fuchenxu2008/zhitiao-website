@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
-import { GlobalContext } from '../context/globalState';
+import { GlobalContext } from '../../context/globalState';
+import './imageBlock.css';
 
 export default function ImageBlock({ url, imgs, maxratio }) {
   const [width, setWidth] = useState(90);
@@ -39,7 +40,7 @@ export default function ImageBlock({ url, imgs, maxratio }) {
   };
 
   return (
-    <div style={styles.imageBlock}>
+    <div className="image-block">
       {
         // 单图响应式的情况，有可能是传进来url或者只有一项的imgs数组
       }
@@ -50,7 +51,8 @@ export default function ImageBlock({ url, imgs, maxratio }) {
               src={
                 'https://imgs.xjtluwall.com/' + (url || imgs[0]) + '/compress'
               }
-              style={{ ...styles.imageResponsive, width, height }}
+              className="image-responsive"
+              style={{ width, height }}
               alt=""
               onLoad={singleLoaded}
             />
@@ -66,12 +68,13 @@ export default function ImageBlock({ url, imgs, maxratio }) {
           {imgs.map((img, index) => (
             <div
               key={img}
-              style={{ ...styles.imageFixedContainer, width, height }}
+              className="image-fixed-container"
+              style={{ width, height }}
             >
               <img
                 src={'https://imgs.xjtluwall.com/' + img + '/compress'}
                 alt=""
-                style={{ ...styles.imageFixed }}
+                className="image-fixed"
               />
             </div>
           ))}
@@ -80,52 +83,3 @@ export default function ImageBlock({ url, imgs, maxratio }) {
     </div>
   );
 }
-
-const styles = {
-  imageBlock: {
-    width: '100%',
-    overflow: 'hidden',
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginTop: 5
-  },
-
-  imageLoading: {
-    width: 150,
-    height: 150,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-
-  imageLoadingFixed: {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-
-  imageResponsive: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 5,
-    position: 'relative'
-  },
-
-  imageFixed: {
-    position: 'relative',
-    width: '100%',
-    height: '100%',
-    borderRadius: 4
-  },
-
-  imageFixedContainer: {
-    marginRight: 8,
-    marginBottom: 8,
-    overflow: 'hidden',
-    width: 190,
-    height: 190
-  }
-};

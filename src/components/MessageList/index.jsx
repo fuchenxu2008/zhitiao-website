@@ -1,11 +1,13 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useContext } from 'react';
 import Message from '../Message';
 import { getLatestMessages } from '../../api/message';
+import { GlobalContext } from '../../context/globalState';
 import './messageList.css';
 
 export default function MessageList() {
   const [messages, setMessages] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
+  const { generateQRCode } = useContext(GlobalContext);
 
   const loadData = useCallback(() => {
     const lastMessage = messages[messages.length - 1] || {};
@@ -36,7 +38,9 @@ export default function MessageList() {
   return (
     <div id="messageList" className="message-list">
       {messages.map(message => (
-        <Message key={message._id} message={message} />
+        <div key={message._id} onClick={() => generateQRCode(message._id)}>
+          <Message message={message} />
+        </div>
       ))}
       {isFetching && <div className="loading-more">Loading...</div>}
     </div>
