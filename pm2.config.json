@@ -1,0 +1,10 @@
+{
+  "apps": [
+    {
+      "name": "ZhitiaoX",
+      "script": "npx",
+      "interpreter": "none",
+      "args": "serve -p 8443 -s build"
+    }
+  ]
+}
